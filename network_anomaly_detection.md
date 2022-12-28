@@ -13,7 +13,7 @@ data.info()
 ```
 ![image](https://user-images.githubusercontent.com/98208084/209839388-429df3b8-320f-4a0d-8de2-08be9d56f2d2.png)
 
-**Here we hypothesise if we are able to classify a new datapoint into a particular flow we are able to observe when an anomaly occurs, i.e. a sudden change in classification may indicate an anomaly occuring**
+**Here we hypothesise if we are able to classify a new datapoint into a particular flow we are able to observe when an anomaly occurs, i.e. a sudden change in classification may indicate an anomaly occuring.**
 
 ### Exploratory Data Analysis
 Our team began by analysing and understanding the provided data. Python was used to calculate statistics and Matplotlib and seaborn packages were utilised to visualise the shape and trends of the time series data. Key observations include: 
@@ -53,11 +53,42 @@ Once the GMM has been trained, it can be used to classify new data points by det
 #### Preprocessing 
 First any preprocessing is done including Z-score scaling and/or PCA; note that we perform experiments to determine if scaling or PCA improves model perforance.
 
+#### Compute Optimal Cluster Number
+The elbow method is a technique that is often used to determine the optimal number of clusters to use in a clustering algorithm such as a Gaussian mixture model (GMM). It is based on the idea that the optimal number of clusters is the point at which the decrease in the sum of squared distances between the points and their closest cluster centers starts to level off. 
+```python
+def compute_optimal_clusters(train,n_clusters,random_state):
+    print("Calculating optimal number of clusters from elbow method")
+    km = KMeans(random_state=random_state)
+    visualizer = KElbowVisualizer(km, k=n_clusters,show=False)
+    t1 = time.perf_counter()
+    visualizer.fit(train)
+    t2 = time.perf_counter()       
+    optimal_k = visualizer.elbow_value_
+
+
+    if optimal_k is None:
+    optimal_k = 1
+
+    print(f"Optimal number of clusters:{optimal_k}")
+    optimal_k_time = t2-t1
+    print('Time taken to find optimal clusters:',optimal_k_time,'s')
+
+    return optimal_k,optimal_k_time
+```
+The above function returns us the optimal number of clusters *optimal_k*.
+
 #### Training 
 ```python 
 # Training a GMM using optimal number of clusters
 gmm, training_time= fit_gmm(train,optimal_k,random_state = random_state,flow_type = flow_type)
 ```
+The model is trained using sklearn's implementation of GMM. This model is then stored for testing. 
+
+#### Testing 
+Testing the GMM follows the following algorithm: 
+![image](https://user-images.githubusercontent.com/98208084/209851535-1608bad8-4ae2-4272-a689-e2c4eb61ab82.png)
+
+
 
 
 
