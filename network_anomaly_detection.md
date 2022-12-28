@@ -114,6 +114,7 @@ Network flow predictions on test feature data
 >4. Record distance between all closest clusters and step 1 and 2 result; 
 
 **end**
+
 5. For each test data point, select cluster model with minimum distance predicted as winner model; 
 
 6. Use winner model's flow as predictions;
