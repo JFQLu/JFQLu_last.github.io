@@ -16,7 +16,7 @@ Excel, SQL, Tableau
 
 ---
 [Tweet Sentiment Analysis](http://example.com/)
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
+<img src="images/anomaly_detection_cover_photo.png?raw=true"/>
 
 Python (exploratory data analysis, feature engineering, machine learning), Natural Language Processing
 
