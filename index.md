@@ -4,11 +4,11 @@
 
 ### Data Visualisation
 
-[Tableau Covid Dashboard](/covid_dashboard_tableau)
+[Tableau Covid Dashboard](/covid_dashboard_tableau) | Excel, SQL, Tableau 
 <img src="images/dummy_thumbnail.jpg?raw=true"/>
 
 ---
-[Project 2 Title](/pdf/sample_presentation.pdf)
+[Network Anomoly Detection](/pdf/sample_presentation.pdf)
 <img src="images/dummy_thumbnail.jpg?raw=true"/>
 
 ---
