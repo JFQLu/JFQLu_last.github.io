@@ -15,7 +15,7 @@ Python (exploratory data analysis, feature engineering, machine learning)
 Excel, SQL, Tableau 
 
 ---
-[Tweet Sentiment Analysis](http://example.com/)
+[Tweet Sentiment Analysis](/tweet_sentiment_analysis.md)
 <img src="images/anomaly_detection_cover_photo.png?raw=true"/>
 
 Python (exploratory data analysis, feature engineering, machine learning), Natural Language Processing
