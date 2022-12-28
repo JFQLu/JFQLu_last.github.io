@@ -103,7 +103,7 @@ Network flow predictions on test feature data
 
 **for** each network flow **do**
 
-    1_ **if** *scale = True* **then**
+    **if** *scale = True* **then**
     
             Scale each feature from testing data using z-score scaler from training data;
 
