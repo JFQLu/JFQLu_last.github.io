@@ -13,7 +13,7 @@ data.info()
 ```
 ![image](https://user-images.githubusercontent.com/98208084/209839388-429df3b8-320f-4a0d-8de2-08be9d56f2d2.png)
 
-**Here we hypothesise if we are able to classify a new datapoint into a particular flow we are able to observe when an anomaly occurs, i.e. a sudden change in classification may indicate an anomaly occuring.**
+**Here we hypothesise if we are able to classify a new datapoint into a particular flow we are able to observe when an anomaly occurs**
 
 ### Exploratory Data Analysis
 Our team began by analysing and understanding the provided data. Python was used to calculate statistics and Matplotlib and seaborn packages were utilised to visualise the shape and trends of the time series data. Key observations include: 
@@ -176,11 +176,10 @@ rf = RandomForestClassifier(n_estimators=n_trees, random_state=random_state).fit
 ```
 
 ### Testing 
-Unlike GMM, only one model needs to be trained to classify all classes, no conflict resolution is required either. 
+Unlike GMM, only one model needs to be trained to classify all classes, no conflict resolution is required either. We only need one line to predict the class of any segment of network flow.
 ```python
 y_pred = model.predict(X_test)
 ```
-
 
 ### Experiment Layer 1 Results
 Best experiment results for each one-class model for layer 1
@@ -189,6 +188,25 @@ Best experiment results for each one-class model for layer 1
 Best experiment results for each multi-class model for layer 1
 ![image](https://user-images.githubusercontent.com/98208084/209847202-760f6db3-8842-40ef-af26-1c087d29bf66.png)
 
+### Experiment Layer 2 Results
+![image](https://user-images.githubusercontent.com/98208084/209859423-22bdf195-52f9-407c-92dd-6da2e2c245d7.png)
+
+### Conclusion 
+![image](https://user-images.githubusercontent.com/98208084/209859560-1a1232a9-bd95-4658-8825-48e6327a1b19.png)
+
+#### Scalability Argument
+To justify our overall final winning model, we need to briefly introduce the scalability argument. We take into account the advantage of one-class models like GMM over multi-class models where adding one new network flow would only require one new model to be trained, whilst the same scenario for multi-class models like random forest would require the entire model to be retrained over the new set of network flows.
+
+However, we believe that the trade-off between time and performance is worthwhile.
+Retraining the Random Forest would take ~10 minutes, and weighted average precision will be maintained at ~99%.
+Alternatively, retraining GMM will take ~1 minute but weighted average precision will only be at the level about 87%.
+
+Considering that the overall problem context is within the cybersecurity area, we should prioritise the weighted average precision metric over the slightly inferior training and testing times of Random Forest with respect to GMM.
+
+Thus, the winning model of our classification task is **Random Forest*.
+
+### Extending to Anomaly Detection
+To integrate our ML solution into practive and extend its capabilities to anomaly detection we can simply observe if and when a particular flow's classification (or probability) deviates away from the actual flow in which the data is being collected from. 
 
 
 
