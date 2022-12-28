@@ -9,7 +9,7 @@ The Internet of Things (IoT) is a technology that connects various devices, mach
 ### Data
 The data provided contained time series network data including packet/byte counts in/out of a number of ports of a number of devices. Below is a snapshot:
 
-![image](https://user-images.githubusercontent.com/98208084/209839106-32f256a9-bcd3-45e8-879c-9a0377a6e9f7.png)
+![image](https://user-images.githubusercontent.com/98208084/209839301-21f1abf0-9a4b-4211-8f56-b6e1476b51b8.png)
 
 
 
