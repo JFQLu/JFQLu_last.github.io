@@ -103,13 +103,7 @@ Network flow predictions on test feature data
 
 **for** each network flow **do**
 
-    **if** *scale = True* **then**
-    
-        Scale each feature from testing data using z-score scaler from training data;
-
-
-
-
+    if
 
 
 ### Random Forest - Deep Dive
