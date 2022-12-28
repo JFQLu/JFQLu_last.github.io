@@ -120,6 +120,7 @@ Network flow predictions on test feature data
 (6) Use winner model's flow as predictions;
 
 
+Predicting with single-class models such as GMM is more complicated then multi-class models due to the need for conflict resolution when the probablity measures are the same for more than one class (network flow).
 
 ### Random Forest - Deep Dive
 
