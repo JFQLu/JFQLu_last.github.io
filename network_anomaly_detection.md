@@ -1,3 +1,5 @@
+## Network Anomaly Detection
+
 ##### Project Collaborators: *Andrew William, Dan Visitchaichan, Daniel Dinh, Michael Li*
 
 ### Project Details
