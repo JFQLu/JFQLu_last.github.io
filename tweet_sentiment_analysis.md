@@ -37,6 +37,80 @@ plt.show()
 ```
 ![image](https://user-images.githubusercontent.com/98208084/209869945-7005cbe4-d627-40f9-adaa-8fa56f7678bb.png)
 
+We observe that there is 10% more neural sentiment tweets compared to the negative and positive classes which may be a potential issue biasing models toward the more prevalent class. Since the difference is only 10% we will ignore this however a potential remedy for this would be to oversample the less prevelent classes or to undersample the more prevelent class.
+
+Now, observing tweet length distibutions across sentiments, 
+
+```python
+plt.figure(figsize=(16, 4))
+plt.subplot(1, 3, 1)
+df_train.query("sentiment==-1")["text"].str.len().plot(kind="hist", title="Negative")
+plt.xlabel('Tweets Length')
+
+plt.subplot(1, 3, 2)
+df_train.query("sentiment==0")["text"].str.len().plot(kind="hist", title="Neutral")
+plt.xlabel('Tweets Length')
+
+plt.subplot(1, 3, 3)
+df_train.query("sentiment==1")["text"].str.len().plot(kind="hist", title="Positive")
+plt.xlabel('Tweets Length')
+
+plt.show()
+```
+
+![image](https://user-images.githubusercontent.com/98208084/209871294-bc12eba4-1ca7-40e9-9b71-a1905ea723b2.png)
+
+and word count distributions,
+
+```python
+plt.figure(figsize=(16, 4))
+plt.subplot(1, 3, 1)
+df_train.query("sentiment==-1").text.map(lambda x: len(x.split())).plot(kind="hist", title="Negative")
+plt.xlabel('Number of Words')
+
+plt.subplot(1, 3, 2)
+df_train.query("sentiment==0").text.map(lambda x: len(x.split())).plot(kind="hist", title="Neutral")
+plt.xlabel('Number of Words')
+
+plt.subplot(1, 3, 3)
+df_train.query("sentiment==1").text.map(lambda x: len(x.split())).plot(kind="hist", title="Positive")
+plt.xlabel('Number of Words')
+
+plt.show()
+```
+![image](https://user-images.githubusercontent.com/98208084/209871517-c977b35a-0025-4e02-b5ad-56c920696a94.png)
+
+We see from this that there is little difference in terms of number of characters or words across each sentiment.
+
+### Preprocessing
+#### Decontraction
+Decontraction is the process of converting contractions, which are shortened forms of words or phrases, back to their full form. For example, "I'm" would be converted to "I am". 
+
+Decontraction is important in natural language processing (NLP) because it helps to normalize the text and make it easier for NLP models to process and understand. Contractions can be ambiguous and can have multiple meanings depending on the context in which they are used. We perform decontraction manually using the following code.
+
+```python
+def decontraction_text(text):    
+    # performing de-contraction
+    text = text.replace(",000,000", "m").replace(",000", "k").replace("′", "'").replace("’", "'").replace("`", "'")\
+                .replace("won't", "will not").replace("cannot", "can not").replace("can't", "can not")\
+                .replace("n't", " not").replace("what's", "what is").replace("it's", "it is")\
+                .replace("'ve", " have").replace("i'm", "i am").replace("'re", " are")\
+                .replace("he's", "he is").replace("she's", "she is").replace("'s", " is")\
+                .replace("'m", " am").replace("'d", " would")\
+                .replace("'ll", " will")
+    return text
+    
+df_train['text']= df_train['text'].apply(lambda x : decontraction_text(x))
+df_test['text'] = df_test['text'].apply(lambda x: decontraction_text(x))
+df_train.head()
+```
+Another important step in preprocessing is stemming. Stemming is the process of reducing inflected (or sometimes derived) words to their word stem, base or root form. For example, the stem of the word "stemmer," is "stem."
+
+Stemming is important in natural language processing (NLP) because it helps to reduce the dimensionality of the data and make it easier for NLP models to process and understand. It does this by reducing the number of unique word forms that need to be considered
+
+
+
+
 
 
 
