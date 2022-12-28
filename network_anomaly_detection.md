@@ -42,6 +42,13 @@ For this project we wanted to compare the effectiveness and logistics of both si
 | ---------- | ---------- |
 |GMM, K-Means, Fuzzy C-Means|Random Forrest, XGBoost, AdaBoost, SVM, MLP, Logistic Regression| 
 
+### Experiment Layer 1 Results
+Best experiment results for each one-class model for layer 1
+![image](https://user-images.githubusercontent.com/98208084/209847168-c7621fd3-1a31-4775-931c-2494d184905d.png)
+Best experiment results for each multi-class model for layer 1
+![image](https://user-images.githubusercontent.com/98208084/209847202-760f6db3-8842-40ef-af26-1c087d29bf66.png)
+
+
 
 
 
