@@ -87,7 +87,14 @@ The model is trained using sklearn's implementation of GMM. This model is then s
 
 #### Testing 
 Testing the GMM follows the following algorithm: 
-![image](https://user-images.githubusercontent.com/98208084/209851535-1608bad8-4ae2-4272-a689-e2c4eb61ab82.png)
+```
+Input: 
+Test feature data of same subsequence size as training feature data
+Set of trained GMM classification models
+Z-score scaler if *scale = True*
+PCA scaler if PCA = True
+
+```
 
 
 
