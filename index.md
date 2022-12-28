@@ -1,16 +1,17 @@
 ## Portfolio
 
 ---
+[Network Anomoly Detection](/pdf/sample_presentation.pdf)
+<img src="images/dummy_thumbnail.jpg?raw=true"/>
+| Python (exploratory data analysis, feature engineering, machine learning)
+
+---
 
 ### Data Visualisation
 
 [Tableau Covid Dashboard](/covid_dashboard_tableau) 
 <img src="images/dummy_thumbnail.jpg?raw=true"/>
 | Excel, SQL, Tableau 
-
----
-[Network Anomoly Detection](/pdf/sample_presentation.pdf)
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
 
 ---
 [Project 3 Title](http://example.com/)
