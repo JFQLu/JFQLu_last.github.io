@@ -104,9 +104,116 @@ df_train['text']= df_train['text'].apply(lambda x : decontraction_text(x))
 df_test['text'] = df_test['text'].apply(lambda x: decontraction_text(x))
 df_train.head()
 ```
-Another important step in preprocessing is stemming. Stemming is the process of reducing inflected (or sometimes derived) words to their word stem, base or root form. For example, the stem of the word "stemmer," is "stem."
 
-Stemming is important in natural language processing (NLP) because it helps to reduce the dimensionality of the data and make it easier for NLP models to process and understand. It does this by reducing the number of unique word forms that need to be considered
+#### Lemmatization
+Lemmatization is another useful preprocessing technique for NLP. Lemmatization is the process of reducing a word to its base form, or lemma. For example, the lemma of the word "was" is "be," and the lemma of the word "better" is "good."
+
+Lemmatization is important in natural language processing (NLP) because it helps to reduce the dimensionality of the data and make it easier for NLP models to process and understand. It does this by reducing the number of unique word forms that need to be considered, which can make it easier to identify common themes and patterns in the text. The code to do this is below using the nltk implementation. 
+
+```python
+from nltk.stem import WordNetLemmatizer
+lemmatizer = WordNetLemmatizer()
+def lemma_stem(x):
+    new = ""
+    for y in x.split():
+        lemmatizer.lemmatize(y)
+        new = new + y + " "
+    return new.rstrip()
+    
+df_train['text'] = df_train['text'].apply(lambda x:lemma_stem(x))
+df_test['text'] = df_test['text'].apply(lambda x: lemma_stem(x))
+```
+
+#### Removing URLs
+Next we can remove URLs as they do not provide useful information,
+```python 
+def remove_URLs(text):
+    return re.sub(r'http\S+', ' ', text,  flags=re.MULTILINE)
+df_train['text']= df_train['text'].apply(lambda x : remove_URLs(x))
+``` 
+
+#### Removing Punctuations
+Whether or not to remove punctuations in natural language processing (NLP) tasks depends on the specific task and the type of punctuation being used. In some cases, punctuations can be useful for understanding the meaning of the text and should be retained. In other cases, punctuations may not be necessary and can be removed as a preprocessing step. 
+
+In our case I choose to remove punctuations to reduce the complexity of the final models and given the context of short tweets, punctuations may not be very useful. 
+
+```python 
+def lower_text_and_remove_special_chars(text):
+    text = text.lower().strip()
+    return re.sub(r"\W+", " ", text)
+
+df_train['text']= df_train['text'].apply(lambda x : lower_text_and_remove_special_chars(x))
+df_test['text'] = df_test['text'].apply(lambda x: lower_text_and_remove_special_chars(x))
+```
+
+#### Removing HTML tags
+HTML tags should be removed as they do not provide information on the sentiment of a tweet.
+
+```python 
+from bs4 import BeautifulSoup
+def remove_html_tags(text):
+    return BeautifulSoup(text).get_text()
+
+df_train['text']= df_train['text'].apply(lambda x : remove_html_tags(x))
+df_test['text'] = df_test['text'].apply(lambda x: remove_html_tags(x))
+```
+
+#### Spelling correction
+There may be spelling mistakes in the tweets, these should be corrected to reduce dimensionality/complexity and improve accuracy. 
+
+```python 
+from spellchecker import SpellChecker
+
+spell = SpellChecker()
+def correct_spellings(text):
+    corrected_text = []
+    misspelled_words = spell.unknown(text.split())
+    for word in text.split():
+        if word in misspelled_words:
+            corrected_text.append(spell.correction(word))
+        else:
+            corrected_text.append(word)
+    return " ".join(corrected_text)
+    
+df_train['text']=df_train['text'].apply(lambda x : correct_spellings(x))
+df_test['text'] = df_test['text'].apply(lambda x: correct_spellings(x))
+```
+
+#### Removing Stop Words
+Finally, we remove stop words such as "in", "on", "with", "by" and "for" since these do not provide much information on the sentiment of tweets and will only add unnecessary complexity to our models.
+
+```python 
+import nltk
+nltk.download('stopwords')
+def remove_stopword(x):
+    new = ""
+    for y in x.split():
+        if y not in stopwords.words('english'):
+            new = f'{new}{y} '
+            #new = new + y + " "
+    return new.rstrip()
+df_train['text'] = df_train['text'].apply(lambda x:remove_stopword(x))
+df_test['text'] = df_test['text'].apply(lambda x:remove_stopword(x))
+```
+
+### Post-Preprocessing Data Analysis
+Now that preprocessing has been done we have a look at the most common words in each sentiment class. 
+
+```python 
+from collections import Counter
+# Most common positive words
+top = Counter([item for sublist in Pt_sent['temp_list'] for item in sublist])
+temp_positive = pd.DataFrame(top.most_common(20))
+temp_positive.columns = ['Common_words','count']
+temp_positive.style.background_gradient(cmap='Greens')
+```
+
+
+
+
+
+
+
 
 
 
