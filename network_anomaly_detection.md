@@ -38,6 +38,7 @@ def smoothen(data,subsequence_length = 16,n=2):
 
 ### Model Training
 For this project we wanted to compare the effectiveness and logistics of both single-class and multi-class machine learning models in classifying network flows. For this reason we tackled this probelm with both single- and multi-class models. 
+
 |Single-class| multi-class|
 | ---------- | ---------- |
 |GMM, K-Means, Fuzzy C-Means|Random Forest, XGBoost, AdaBoost, SVM, MLP, Logistic Regression| 
@@ -45,7 +46,7 @@ For this project we wanted to compare the effectiveness and logistics of both si
 This blog will deep dive into the one-class Gaussian Mxture Model and the multi-class Random Forest models.
 
 ### Guassian Mixture Model - Deep Dive
-A Gaussian mixture model (GMM) is a probabilistic model that assumes that the data is generated from a mixture of several different Gaussian distributions. It is often used for classification tasks because it allows for the modeling of complex, multimodal distributions and can handle data with uncertainty or incomplete information.
+A Gaussian mixture model (GMM) is a unsupervised probabilistic model that assumes that the data is generated from a mixture of several different Gaussian distributions. It is often used for classification tasks because it allows for the modeling of complex, multimodal distributions and can handle data with uncertainty or incomplete information.
 
 In a GMM, each data point is assumed to belong to one of the Gaussian distributions in the mixture, and the model estimates the probability that a given data point belongs to each of the different distributions. The model can then classify a new data point based on which distribution it is most likely to belong to.
 
