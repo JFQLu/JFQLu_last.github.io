@@ -196,7 +196,7 @@ df_train['text'] = df_train['text'].apply(lambda x:remove_stopword(x))
 df_test['text'] = df_test['text'].apply(lambda x:remove_stopword(x))
 ```
 
-### Post-Preprocessing Data Analysis
+### Post-Preprocessing Data Exploration
 Now that preprocessing has been done we have a look at the most common words in each sentiment class. 
 
 ```python 
