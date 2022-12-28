@@ -40,7 +40,7 @@ def smoothen(data,subsequence_length = 16,n=2):
 For this project we wanted to compare the effectiveness and logistics of both single-class and multi-class machine learning models in classifying network flows. For this reason we tackled this probelm with both single- and multi-class models. 
 |Single-class| multi-class|
 | ---------- | ---------- |
-|GMM|Random Forrest| 
+|GMM, K-Means, Fuzzy C-Means|Random Forrest, XGBoost, AdaBoost, SVM, MLP, Logistic Regression| 
 
 
 
