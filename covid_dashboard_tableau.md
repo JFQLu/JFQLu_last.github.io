@@ -66,7 +66,7 @@ The final step of this project is to visualise my findings in a Tableau dashboar
 My key takeaways from this part of the project are 
 - the importance of having a clear goal in mind for what I want to achieve from the dashboard
 - to keep the dashboard simple in terms of information and design
-- testing and iterating the dashboard to imrove its design
+- testing and iterating the dashboard to improve its design
 
 
 
