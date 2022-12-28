@@ -4,8 +4,9 @@
 
 ### Data Visualisation
 
-[Tableau Covid Dashboard](/covid_dashboard_tableau) | Excel, SQL, Tableau 
+[Tableau Covid Dashboard](/covid_dashboard_tableau) 
 <img src="images/dummy_thumbnail.jpg?raw=true"/>
+| Excel, SQL, Tableau 
 
 ---
 [Network Anomoly Detection](/pdf/sample_presentation.pdf)
