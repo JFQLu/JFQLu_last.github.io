@@ -210,10 +210,12 @@ To integrate our ML solution into practive and extend its capabilities to anomal
 
 ### Best GMM and Random Forest (confusion matrix and classification report)
 Guassian Mixture Models:
+
 ![image](https://user-images.githubusercontent.com/98208084/209861543-d8d78a92-0f39-4321-aeda-8619ea2595ca.png)
 ![image](https://user-images.githubusercontent.com/98208084/209861574-974e5549-adfd-4dca-a875-8f411bd7dcf2.png)
 
 Random Forest:
+
 ![image](https://user-images.githubusercontent.com/98208084/209861212-4c290975-fe5f-4a5e-a715-d8a1b73872ba.png)
 ![image](https://user-images.githubusercontent.com/98208084/209861374-df34f367-be68-4132-8f42-9b7735437889.png)
 
