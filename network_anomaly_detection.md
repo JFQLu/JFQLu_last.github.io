@@ -9,33 +9,7 @@ The Internet of Things (IoT) is a technology that connects various devices, mach
 ### Data
 The data provided contained time series network data including packet/byte counts in/out of a number of ports of a number of devices. Below is a snapshot:
 
- #   Column                                                             Dtype 
----  ------                                                             ----- 
- 0   time                                                               object
- 1   FromInternetTCPPort443IPurn:ietf:params:mud:controllerByteCount    int64 
- 2   FromInternetTCPPort443IPurn:ietf:params:mud:controllerPacketCount  int64 
- 3   FromInternetTCPPort554IPurn:ietf:params:mud:controllerByteCount    int64 
- 4   FromInternetTCPPort554IPurn:ietf:params:mud:controllerPacketCount  int64 
- 5   FromInternetTCPPort80IPurn:ietf:params:mud:controllerByteCount     int64 
- 6   FromInternetTCPPort80IPurn:ietf:params:mud:controllerPacketCount   int64 
- 7   FromInternetUDPPort67IPurn:ietf:params:mud:controllerByteCount     int64 
- 8   FromInternetUDPPort67IPurn:ietf:params:mud:controllerPacketCount   int64 
- 9   ToInternetRSVPPortAllIPurn:ietf:params:mud:controllerByteCount     int64 
- 10  ToInternetRSVPPortAllIPurn:ietf:params:mud:controllerPacketCount   int64 
- 11  ToInternetTCPPort443IPurn:ietf:params:mud:controllerByteCount      int64 
- 12  ToInternetTCPPort443IPurn:ietf:params:mud:controllerPacketCount    int64 
- 13  ToInternetTCPPort554IPurn:ietf:params:mud:controllerByteCount      int64 
- 14  ToInternetTCPPort554IPurn:ietf:params:mud:controllerPacketCount    int64 
- 15  ToInternetTCPPort80IPurn:ietf:params:mud:controllerByteCount       int64 
- 16  ToInternetTCPPort80IPurn:ietf:params:mud:controllerPacketCount     int64 
- 17  ToInternetUDPPort1024IPurn:ietf:params:mud:controllerByteCount     int64 
- 18  ToInternetUDPPort1024IPurn:ietf:params:mud:controllerPacketCount   int64 
- 19  ToLocalUDPPort5353IP224.0.0.251/32ByteCount                        int64 
- 20  ToLocalUDPPort5353IP224.0.0.251/32PacketCount                      int64 
- 21  ToLocalUDPPort67IP255.255.255.255/32ByteCount                      int64 
- 22  ToLocalUDPPort67IP255.255.255.255/32PacketCount                    int64 
- 23  device_mac                                                         object
-
+![image](https://user-images.githubusercontent.com/98208084/209839106-32f256a9-bcd3-45e8-879c-9a0377a6e9f7.png)
 
 
 
