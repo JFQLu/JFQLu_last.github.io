@@ -88,14 +88,14 @@ The model is trained using sklearn's implementation of GMM. This model is then s
 #### Testing 
 Testing the GMM follows the following algorithm: 
 
-<pre>**Input:**
+<code>**Input:**
 Test feature data of same subsequence size as training feature data
 Set of trained GMM classification models
 Z-score scaler if *scale = True*
 PCA scaler if *PCA = True*
 **Output:**
 Network flow predictions on test feature data
-<pre>
+<code>
 
 
 
