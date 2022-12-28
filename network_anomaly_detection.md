@@ -120,10 +120,67 @@ Network flow predictions on test feature data
 
 (6) Use winner model's flow as predictions;
 
-
-Predicting with single-class models such as GMM is more complicated then multi-class models due to the need for conflict resolution when the probablity measures are the same for more than one class (network flow).
+For single-class clasifiers like GMM we need to produce a model for each class. Predicting with single-class models such as GMM is more complicated then multi-class models due to the need for conflict resolution when the probablity measures are the same for more than one class (network flow). 
 
 ### Random Forest - Deep Dive
+Random Forest (RF) is a supervised machine learning algorithm for classification and regression. It is an ensemble method meaning it combines the predictions of multiple decision trees trained on different subsets of the data, and makes a final prediction by taking the mode or mean of the individual predictions. It is effective at handling high-dimensional and sparse data, and is resistant to overfitting. It is also relatively easy to implement and interpret.
+
+#### Preprocessing
+Since RF is a supervised ML model we need to create labels in our feature data. This can be done by applying the following function to the data.
+
+```python
+def convert_one_class_to_multi_class(df):
+    '''
+    This function will convert the feature_subsequence dataset to make it suitable for multi-class.
+    Note that columns that are not relevant to features (such as time/device_mac) will be removed.
+
+    It will change the shape of the dataset from "wide" to "long", with the flow types assigned as a separate new column.
+
+    NOTE: The input MUST be dataframe of features computed from subsequences.
+    '''
+
+    # Extract relevant column flow names, and feature names from the column names
+    if 'time' in df.columns:
+    df = df.drop(['time'],axis=1)
+
+    if 'device_mac' in df.columns:
+    df = df.drop(['device_mac'],axis=1)
+    cols = [c for c in df.columns]
+    flows = [extract_flow_from_column(c) for c in cols]
+    features = [extract_feature_from_column(c) for c in cols]
+
+    # Create a multi-level column with the extracted names
+    new_columns = list(zip(flows,features,cols))
+    df.columns=pd.MultiIndex.from_tuples(new_columns)
+
+    # Stack the dataframe -
+    # This will place the columns at the flow level, and original level into the rows. The end result will be our feature names will be the remaining columns
+    df = df.stack(level= [0,2])
+    # Condense the stacked dataframe by summing -
+    # After stacking, there will be a lot of null values for observations that didn't exist. 
+    # We can get rid of these observations using a group by and sum, since the nulls will be treated as 0 in a sum operation.
+    df = df.groupby(level = [0,1]).sum()
+
+    # Finally, reset index and rename accordingly
+    df = df.reset_index().drop('level_0',axis=1).rename({'level_1':'FlowType'},axis=1)
+
+    return df
+```
+
+### Training
+
+Once we have labelled data we can simply train the RF model using sklearn's implementation. 
+
+```python
+rf = RandomForestClassifier(n_estimators=n_trees, random_state=random_state).fit(X_train,y_train)
+```
+
+### Testing 
+Unlike GMM, only one model needs to be trained to classify all classes, no conflict resolution is required either. 
+```python
+y_pred = model.predict(X_test)
+```
+
 
 ### Experiment Layer 1 Results
 Best experiment results for each one-class model for layer 1
