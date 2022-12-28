@@ -103,13 +103,17 @@ Network flow predictions on test feature data
 
 **for** each network flow **do**
 
->1.**if** *scale = True* **then**
+>1. **if** *scale = True* **then**
 >>Scale each feature from test data using z-score scalar from training data; 
 
->**else**
->>Skip step;
->**end** 
-> 
+>2. **if** *PCA = True* **then**
+>> Obtain principal components using PCA scalar on features and reduce dimensions using minimal principal components;
+ 
+>3. Predict closest cluster to step 1 and 2 result, using all cluster models; 
+
+>4. Record distance between all closest clusters and step 1 and 2 result; 
+
+**end**
 
 
 
