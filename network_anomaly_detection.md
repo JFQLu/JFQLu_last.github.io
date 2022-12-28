@@ -41,6 +41,7 @@ For this project we wanted to compare the effectiveness and logistics of both si
 |Single-class| multi-class|
 | ---------- | ---------- |
 |GMM, K-Means, Fuzzy C-Means|Random Forest, XGBoost, AdaBoost, SVM, MLP, Logistic Regression| 
+
 This blog will deep dive into the one-class Gaussian Mxture Model and the multi-class Random Forest models.
 
 ### Guassian Mixture Model - Deep Dive
