@@ -5,4 +5,4 @@ In the fast-paced world of social media, it is critical to accurately identify t
 
 The Kaggle competition [Tweet Sentiment Extraction](https://www.kaggle.com/competitions/tweet-sentiment-extraction/overview) embodies the fundamental ideas of sentiment analysis. This challenge requires the participants to look at the labelled sentiment for a given tweet and determine the word or phrase that best supports it. 
 
-*For this project, I will be focussing on the classification of the sentiment for each tweet and optimisation of the implementation. I believe that this task would be more useful for a company looking to do sentiment analysis on their own customers.* 
+*For this project, I will be focussing on the classification of the sentiment for each tweet and optimisation of the implementation. I believe that this deliverable would be more useful for a company looking to do sentiment analysis on their own customers.* 
