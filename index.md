@@ -3,6 +3,7 @@
 ---
 [Network Anomoly Detection](/pdf/sample_presentation.pdf)
 <img src="images/dummy_thumbnail.jpg?raw=true"/>
+
 | Python (exploratory data analysis, feature engineering, machine learning)
 
 ---
@@ -11,6 +12,7 @@
 
 [Tableau Covid Dashboard](/covid_dashboard_tableau) 
 <img src="images/dummy_thumbnail.jpg?raw=true"/>
+
 | Excel, SQL, Tableau 
 
 ---
