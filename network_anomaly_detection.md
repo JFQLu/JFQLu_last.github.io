@@ -94,8 +94,7 @@ Set of trained GMM classification models
 Z-score scaler if *scale = True*
 PCA scaler if *PCA = True*
 **Output:**
-Network flow predictions on test feature data
-<code>
+Network flow predictions on test feature data<code>
 
 
 
