@@ -1,7 +1,7 @@
 ## Portfolio
 
 ---
-[Network Anomoly Detection](/pdf/sample_presentation.pdf)
+[Network Anomoly Detection](/network_anomaly_detection.md)
 <img src="images/covid_dashboard_image.png?raw=true"/>
 
 | Python (exploratory data analysis, feature engineering, machine learning)
