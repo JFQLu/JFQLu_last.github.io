@@ -10,8 +10,8 @@
 
 ### Data Visualisation
 
-[Tableau Covid Dashboard](/covid_dashboard_tableau) 
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
+[Tableau Covid Dashboard](/covid_dashboard_tableau.md) 
+<img src="images/covid_dashboard_image.png?raw=true"/>
 
 | Excel, SQL, Tableau 
 
