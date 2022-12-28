@@ -4,7 +4,7 @@
 
 ### Data Visualisation
 
-[Project 1 Title](/sample_page)
+[Tableau Covid Dashboard](/covid_dashboard_tableau)
 <img src="images/dummy_thumbnail.jpg?raw=true"/>
 
 ---
