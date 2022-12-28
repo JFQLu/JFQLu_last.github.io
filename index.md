@@ -2,7 +2,7 @@
 
 ---
 [Network Anomoly Detection](/pdf/sample_presentation.pdf)
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
+<img src="images/covid_dashboard_image.png?raw=true"/>
 
 | Python (exploratory data analysis, feature engineering, machine learning)
 
