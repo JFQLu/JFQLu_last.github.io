@@ -16,7 +16,7 @@ Excel, SQL, Tableau
 
 ---
 [Tweet Sentiment Analysis](/tweet_sentiment_analysis.md)
-<img src="images/anomaly_detection_cover_photo.png?raw=true"/>
+<img src="images/tweet_sentiment_analysis_cover_photo.png?raw=true"/>
 
 Python (exploratory data analysis, feature engineering, machine learning), Natural Language Processing
 
