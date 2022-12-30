@@ -254,17 +254,36 @@ y_test = np.array(df_test['sentiment'])
 ### Logistic Regression 
 The first model we will be training is the logistic regression. Logistic regression is a generalised linear model and assumes that the data follows a Bernoulli     distribution. Logistic regression solves for the parameters by maximising the likelihood function and applying gradient descent. The structure of the logistic regression model is simple and interpretable, and the influence of different features on the final results can be seen from the weights of the features.
 
-In logistic regression, the model estimates the probability that an instance belongs to a class (e.g., 0 or 1) using a logistic function, which is defined as:
+We use the sklearn implementation of logistic regression and grid-search for hyperparameter tuning.
 
-p = 1 / (1 + e^(-z))
+```python
+from sklearn.model_selection import GridSearchCV
+from sklearn.linear_model import LogisticRegression
+grid={"C":np.linspace(0,10,11), "penalty":["l1","l2"]}# l1 lasso l2 ridge
+logreg=LogisticRegression()
+logreg_cv=GridSearchCV(logreg,grid,cv=10)
+logreg_cv.fit(X_train,y_train)
 
-where p is the probability that the instance belongs to the positive class, e is the base of the natural logarithm (approximately 2.718), and z is the linear combination of the features and their weights:
+print("tuned hpyerparameters :(best parameters) ",logreg_cv.best_params_)
+print("accuracy :",logreg_cv.best_score_)
+```
 
-z = w_0 + w_1 * x_1 + w_2 * x_2 + ... + w_n * x_n
+We can then use this model to predict on the training set.
 
-where w_0 is the intercept term and w_1, w_2, ..., w_n are the weights of the features x_1, x_2, ..., x_n, respectively.
+```python
+clf = LogisticRegression(penalty=logreg_cv.best_params_['penalty'], C=logreg_cv.best_params_['C'])
+clf.fit(X_train, y_train)
+y_pred = clf.predict(X_test)
+print('test acc: %.2f%%, test f1 score: %.4f' % (100 * accuracy_score(y_test, y_pred), f1_score(y_test, y_pred, average='weighted')))
+```
 
-The logistic function maps the output of the linear combination of the features to a value between 0 and 1, which can be interpreted as the probability that the instance belongs to the positive class. The class is then predicted based on a threshold probability, typically 0.5. If the predicted probability is greater than or equal to the threshold, the instance is classified as the positive class, otherwise it is classified as the negative class.
+- Test accuracy = 68.48%
+- Test f1 score = 0.6849 
+
+### Deep Learning - Multilayer Perceptron
+
+
+
 
 
 
