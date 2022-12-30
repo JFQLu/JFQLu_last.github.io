@@ -193,7 +193,7 @@ def remove_stopword(x):
 df_train['temp_list'] = df_train['temp_list'].apply(lambda x:remove_stopword(x))
 ```
 
-we also create a text version which will be used for tfidf vectorisation later.
+we also create a text version which will be used for TF-IDF vectorisation later.
 
 ```python 
 # Text version for tfidf vectorisation
@@ -232,6 +232,42 @@ for sentiment in [(Pt_sent, 'Greens'), (Nt_sent, 'Blues'), (Ng_sent, 'Reds')]:
 ```
 
 ![image](https://user-images.githubusercontent.com/98208084/210032590-65b9288a-3dde-4ba9-b0dc-a90f9d666019.png)
+
+### Modeling
+#### TF-IDF
+TF-IDF (Term Frequency-Inverse Document Frequency) is a common technique used in natural language processing (NLP) to represent the importance of words in a document. It is typically used to transform text data into numerical vectors that can be used as input to machine learning models. 
+
+We will be applying this vectorizer to our pre-processed data to extract features for our machine learning models. 
+
+```python
+from sklearn.feature_extraction.text import TfidfVectorizer
+vectorizer = TfidfVectorizer(max_features=1024)
+X_train = vectorizer.fit_transform(df_train['text'])
+X_train = np.array(X_train.toarray())
+y_train = np.array(df_train['sentiment'])
+
+X_test = vectorizer.transform(df_test['text'])
+X_test = np.array(X_test.toarray())
+y_test = np.array(df_test['sentiment'])
+```
+
+### Logistic Regression 
+The first model we will be training is the logistic regression. Logistic regression is a generalised linear model and assumes that the data follows a Bernoulli     distribution. Logistic regression solves for the parameters by maximising the likelihood function and applying gradient descent. The structure of the logistic regression model is simple and interpretable, and the influence of different features on the final results can be seen from the weights of the features.
+
+In logistic regression, the model estimates the probability that an instance belongs to a class (e.g., 0 or 1) using a logistic function, which is defined as:
+
+p = 1 / (1 + e^(-z))
+
+where p is the probability that the instance belongs to the positive class, e is the base of the natural logarithm (approximately 2.718), and z is the linear combination of the features and their weights:
+
+z = w_0 + w_1 * x_1 + w_2 * x_2 + ... + w_n * x_n
+
+where w_0 is the intercept term and w_1, w_2, ..., w_n are the weights of the features x_1, x_2, ..., x_n, respectively.
+
+The logistic function maps the output of the linear combination of the features to a value between 0 and 1, which can be interpreted as the probability that the instance belongs to the positive class. The class is then predicted based on a threshold probability, typically 0.5. If the predicted probability is greater than or equal to the threshold, the instance is classified as the positive class, otherwise it is classified as the negative class.
+
+
+
 
 
 
