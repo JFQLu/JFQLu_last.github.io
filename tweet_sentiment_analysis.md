@@ -182,7 +182,21 @@ df_test['text'] = df_test['text'].apply(lambda x: correct_spellings(x))
 #### Removing Stop Words
 Finally, we remove stop words such as "in", "on", "with", "by" and "for" since these do not provide much information on the sentiment of tweets and will only add unnecessary complexity to our models.
 
+First, we create a string version containing a list of words for further EDA,
+
+```python
+df_train['temp_list'] = df_train['text'].apply(lambda x:str(x).split())
+
+# Str version for EDA
+def remove_stopword(x):
+    return [y for y in x if y not in stopwords.words('english')]
+df_train['temp_list'] = df_train['temp_list'].apply(lambda x:remove_stopword(x))
+```
+
+we also create a text version which will be used for tfidf vectorisation later.
+
 ```python 
+# Text version for tfidf vectorisation
 import nltk
 nltk.download('stopwords')
 def remove_stopword(x):
@@ -197,16 +211,40 @@ df_test['text'] = df_test['text'].apply(lambda x:remove_stopword(x))
 ```
 
 ### Post-Preprocessing Data Exploration
-Now that preprocessing has been done we have a look at the most common words in each sentiment class. 
+Now that preprocessing has been done we have a look at the most common words in each sentiment class. First, lets separate the sentiments.
 
 ```python 
+Pt_sent = df_train[df_train['sentiment']==1]
+Ng_sent = df_train[df_train['sentiment']==-1]
+Nt_sent = df_train[df_train['sentiment']==0]
+``` 
+
+Now we look at the most common words for each class.
+
+```python
 from collections import Counter
 # Most common positive words
 top = Counter([item for sublist in Pt_sent['temp_list'] for item in sublist])
 temp_positive = pd.DataFrame(top.most_common(20))
 temp_positive.columns = ['Common_words','count']
 temp_positive.style.background_gradient(cmap='Greens')
+
+#Most common Neutral words
+top = Counter([item for sublist in Nt_sent['temp_list'] for item in sublist])
+temp_neutral = pd.DataFrame(top.most_common(20))
+temp_neutral = temp_neutral.loc[1:,:]
+temp_neutral.columns = ['Common_words','count']
+temp_neutral.style.background_gradient(cmap='Blues')
+
+#Most common negative words
+top = Counter([item for sublist in Ng_sent['temp_list'] for item in sublist])
+temp_negative = pd.DataFrame(top.most_common(20))
+temp_negative = temp_negative.iloc[1:,:]
+temp_negative.columns = ['Common_words','count']
+temp_negative.style.background_gradient(cmap='Reds')
 ```
+
+![image](https://user-images.githubusercontent.com/98208084/210032300-b60e6cab-7571-440a-962e-3991a4df595d.png)
 
 
 
