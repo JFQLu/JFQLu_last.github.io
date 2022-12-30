@@ -223,26 +223,17 @@ Now we look at the most common words for each class.
 
 ```python
 from collections import Counter
-# Most common positive words
-top = Counter([item for sublist in Pt_sent['temp_list'] for item in sublist])
-temp_positive = pd.DataFrame(top.most_common(20))
-temp_positive.columns = ['Common_words','count']
-temp_positive.style.background_gradient(cmap='Greens')
-
-# Most common Neutral words
-top = Counter([item for sublist in Nt_sent['temp_list'] for item in sublist])
-temp_neutral = pd.DataFrame(top.most_common(20))
-temp_neutral.columns = ['Common_words','count']
-temp_neutral.style.background_gradient(cmap='Blues')
-
-# Most common negative words
-top = Counter([item for sublist in Ng_sent['temp_list'] for item in sublist])
-temp_negative = pd.DataFrame(top.most_common(20))
-temp_negative.columns = ['Common_words','count']
-temp_negative.style.background_gradient(cmap='Reds')
+# Most common words for each sentiment
+for sentiment in [(Pt_sent, 'Greens'), (Nt_sent, 'Blues'), (Ng_sent, 'Reds')]:
+    top = Counter([item for sublist in sentiment[0]['temp_list'] for item in sublist])
+    temp_sent = pd.DataFrame(top.most_common(20))
+    temp_sent.columns = ['Common_words','count']
+    display(temp_sent.style.background_gradient(cmap=sentiment[1]))
 ```
 
-![image](https://user-images.githubusercontent.com/98208084/210032300-b60e6cab-7571-440a-962e-3991a4df595d.png)
+![image](https://user-images.githubusercontent.com/98208084/210032590-65b9288a-3dde-4ba9-b0dc-a90f9d666019.png)
+
+
 
 
 
