@@ -229,17 +229,15 @@ temp_positive = pd.DataFrame(top.most_common(20))
 temp_positive.columns = ['Common_words','count']
 temp_positive.style.background_gradient(cmap='Greens')
 
-#Most common Neutral words
+# Most common Neutral words
 top = Counter([item for sublist in Nt_sent['temp_list'] for item in sublist])
 temp_neutral = pd.DataFrame(top.most_common(20))
-temp_neutral = temp_neutral.loc[1:,:]
 temp_neutral.columns = ['Common_words','count']
 temp_neutral.style.background_gradient(cmap='Blues')
 
-#Most common negative words
+# Most common negative words
 top = Counter([item for sublist in Ng_sent['temp_list'] for item in sublist])
 temp_negative = pd.DataFrame(top.most_common(20))
-temp_negative = temp_negative.iloc[1:,:]
 temp_negative.columns = ['Common_words','count']
 temp_negative.style.background_gradient(cmap='Reds')
 ```
