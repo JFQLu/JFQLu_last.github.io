@@ -15,12 +15,13 @@ Python (exploratory data analysis, feature engineering, machine learning)
 Excel, SQL, Tableau 
 
 ---
+
 [Tweet Sentiment Analysis](/tweet_sentiment_analysis.md)
 <img src="images/tweet_sentiment_analysis_cover_photo.png?raw=true"/>
 
 Python (exploratory data analysis, feature engineering, machine learning), Natural Language Processing
 
-
+---
 [Graph Processing Using Spark - GraphX](/reachable_vertices.md)
 <img src="images/graphx_reachable_vertices_dp.png?raw=true"/>
 
