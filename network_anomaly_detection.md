@@ -208,7 +208,7 @@ Considering that the overall problem context is within the cybersecurity area, w
 Thus, the winning model of our classification task is **Random Forest*.
 
 ### Extending to Anomaly Detection
-To integrate our ML solution into practive and extend its capabilities to anomaly detection we can simply observe if and when a particular flow's classification (or probability) deviates away from the actual flow in which the data is being collected from. 
+To integrate our ML solution into practice and extend its capabilities to anomaly detection we can simply observe if and when a particular flow's classification (or probability) deviates away from the actual flow in which the data is being collected from. 
 
 ### Best GMM and Random Forest (confusion matrix and classification report)
 Guassian Mixture Models:
