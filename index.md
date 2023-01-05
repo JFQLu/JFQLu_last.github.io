@@ -22,7 +22,7 @@ Python (exploratory data analysis, feature engineering, machine learning), Natur
 
 
 [Graph Processing Using Spark - GraphX](/reachable_vertices.md)
-<img src="images/tweet_sentiment_analysis_cover_photo.png?raw=true"/>
+<img src="images/graphx_reachable_vertices_dp.png?raw=true"/>
 
 Scala, Spark, GraphX, Pregel Operator
 
